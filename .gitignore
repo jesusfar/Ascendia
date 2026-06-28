@@ -36,3 +36,6 @@ Thumbs.db
 
 # Artefacto generado por maven-shade-plugin
 web/dependency-reduced-pom.xml
+
+# Config local del preview tool (rutas absolutas de la maquina)
+.claude/launch.json

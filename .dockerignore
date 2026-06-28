@@ -1,0 +1,20 @@
+# Mantener liviano el build context que se envia a Docker / Hugging Face.
+# OJO: NO excluir database/ ni deploy/ (el runtime los COPIA del context).
+.git
+.gitignore
+.idea
+.vscode
+.claude
+bin/
+out/
+target/
+web/target/
+web/dependency-reduced-pom.xml
+**/*.class
+.mysql-data*/
+*.log
+*.err
+lib/*.jar
+sources.txt
+reportes/
+evidencias/

@@ -1,3 +1,13 @@
+---
+title: Ascendia
+emoji: 🌍
+colorFrom: blue
+colorTo: indigo
+sdk: docker
+app_port: 7860
+pinned: false
+---
+
 # Ascendia
 
 **Sistema de Gestion Integral de Oportunidades Educativas Globales para Jovenes**
