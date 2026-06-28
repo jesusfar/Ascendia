@@ -12,6 +12,22 @@
   let bubble = null;          // globo de diálogo (DOM)
   let bubbleUntil = 0;        // timestamp hasta el que se muestra
 
+  // --- consejos para estudiantes (se muestran al azar al tocar a Marvin) ---
+  const CONSEJOS = [
+    'Postulá a varias becas a la vez: multiplicás tus chances. 🎯',
+    'Empezá con el inglés hoy: casi todas las becas lo piden. 🗣️',
+    'Anotá las fechas límite y restales dos semanas de margen. ⏰',
+    'Una buena carta de motivación pesa más que mil diplomas. ✍️',
+    'Tené tus documentos escaneados y traducidos, listos para enviar. 📂',
+    'Pedí las cartas de recomendación con bastante anticipación. 🤝',
+    'No te frene la plata: muchas becas cubren todo, hasta el pasaje. ✈️',
+    'Seguí a las universidades en redes: ahí publican las convocatorias. 📣',
+    'Apuntá alto, pero sumá también opciones realistas. ⭐',
+    'Si te rechazan, volvé a intentar: casi nadie entra al primer intento. 💪'
+  ];
+  let saludado = false;       // el primer toque saluda; los siguientes dan consejos
+  let ultimoConsejo = -1;     // evita repetir el mismo consejo seguido
+
   // --- parámetros de órbita ---
   const INC = 0.62;           // inclinación de la órbita (rad)
   const NODE = 0.6;           // nodo ascendente (rad)
@@ -263,7 +279,21 @@
   }
 
   function mostrarBubble() {
-    bubbleUntil = now() + 3600;
+    const txt = bubble.querySelector('.mb-text');
+    if (!saludado) {
+      // primer toque: saludo inicial
+      txt.innerHTML = '¡Hola, soy <b>Marvin</b>! Tocame para un consejo ✨';
+      saludado = true;
+      bubbleUntil = now() + 3800;
+    } else {
+      // toques siguientes: un consejo al azar (sin repetir el anterior)
+      let i;
+      do { i = Math.floor(Math.random() * CONSEJOS.length); }
+      while (CONSEJOS.length > 1 && i === ultimoConsejo);
+      ultimoConsejo = i;
+      txt.textContent = CONSEJOS[i];
+      bubbleUntil = now() + 5600;   // más tiempo para leer el consejo
+    }
     bubble.classList.add('show');
     seguirBubble(now());
   }

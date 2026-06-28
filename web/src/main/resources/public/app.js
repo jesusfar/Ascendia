@@ -119,6 +119,14 @@ const OVERRIDE_ES = {
 };
 const esNombre = (s) => (s && OVERRIDE_ES[s]) || s || '';
 
+/* Las etiquetas del mapa son texto 3D extruido (globe.gl) cuya tipografia no
+   incluye glifos acentuados: los tildes/enes salen como "?". Para las ETIQUETAS
+   plegamos los diacriticos (a->a, n->n, etc.) y asi se leen limpias. Los datos
+   y tooltips (HTML) conservan los acentos correctos; esto solo afecta el texto
+   dibujado sobre el globo. */
+const sinTildes = (s) => (s || '').normalize('NFD').replace(/[̀-ͯ]/g, '');
+const etiquetaES = (s) => sinTildes(esNombre(s));
+
 /* ---------------------------------------------------------------------------
    3. ESTADO
 --------------------------------------------------------------------------- */
@@ -208,7 +216,7 @@ async function init() {
     .labelText('name')
     .labelSize(d => d.size || 0.66)
     .labelColor(d => d.color || 'rgba(255,255,255,0.96)')
-    .labelResolution(3)
+    .labelResolution(6)
     .labelAltitude(d => d.alt != null ? d.alt : 0.015)
     .labelIncludeDot(false)
     .labelsTransitionDuration(0);
@@ -336,7 +344,7 @@ function cargarContinentes() {
         const p = f.properties;
         return {
           lat: c.lat, lng: c.lng,
-          name: esNombre(p.NAME_ES || p.ADMIN || p.NAME || p.name || ''),
+          name: etiquetaES(p.NAME_ES || p.ADMIN || p.NAME || p.name || ''),
           size: 0.72, alt: 0.021,
           color: 'rgba(255,255,255,0.98)', kind: 'country'
         };
@@ -476,7 +484,7 @@ function cargarCiudades() {
         const p = f.properties;
         const sr = (p.SCALERANK != null) ? p.SCALERANK : p.scalerank;
         const pop = (p.POP_MAX != null) ? p.POP_MAX : p.pop_max;
-        const nm = esNombre(p.name || p.NAME || p.nameascii || p.NAMEASCII || '');
+        const nm = etiquetaES(p.name || p.NAME || p.nameascii || p.NAMEASCII || '');
         let rank = (sr != null) ? sr : rankDesdePob(pop);
         return { lat: co[1], lng: co[0], name: nm, rank, kind: 'city' };
       }).filter(c => c && c.name);
@@ -574,7 +582,7 @@ function cargarLimites() {
         if (!f.geometry) return null;
         const c = centroidePais(f.geometry);
         const p = f.properties || {};
-        const nm = esNombre(p.name_es || p.name || p.name_en || p.gn_name || p.woe_name || '');
+        const nm = etiquetaES(p.name_es || p.name || p.name_en || p.gn_name || p.woe_name || '');
         return { lat: c.lat, lng: c.lng, name: nm, kind: 'state' };
       }).filter(s => s && s.name && isFinite(s.lat) && isFinite(s.lng));
       if (bordersLevel >= 1) { lastBordKey = ''; aplicarLimites(GLOBE.pointOfView().altitude); }
