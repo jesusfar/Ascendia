@@ -1,0 +1,74 @@
+[
+    {
+        "id": 7,
+        "titulo": "Beca Fulbright para Doctorado en EE.UU.",
+        "tipo": "BECA",
+        "lat": 42.3601,
+        "lng": -71.0942,
+        "fechaApertura": null,
+        "fechaLimite": "2026-06-30",
+        "diasRestantes": 2,
+        "modalidad": "PRESENCIAL",
+        "idioma": "Ingles"
+    },
+    {
+        "id": 5,
+        "titulo": "Pasantia en Investigacion - University of Tokyo",
+        "tipo": "PASANTIA",
+        "lat": 35.7126,
+        "lng": 139.762,
+        "fechaApertura": null,
+        "fechaLimite": "2026-07-01",
+        "diasRestantes": 3,
+        "modalidad": "PRESENCIAL",
+        "idioma": "Ingles/Japones"
+    },
+    {
+        "id": 2,
+        "titulo": "Erasmus Mundus Joint Masters",
+        "tipo": "BECA",
+        "lat": 48.84794,
+        "lng": 2.35639,
+        "fechaApertura": null,
+        "fechaLimite": "2026-09-01",
+        "diasRestantes": 65,
+        "modalidad": "PRESENCIAL",
+        "idioma": "Ingles/Frances"
+    },
+    {
+        "id": 1,
+        "titulo": "Beca DAAD para Maestria en Ingenieria",
+        "tipo": "BECA",
+        "lat": 52.51253,
+        "lng": 13.32693,
+        "fechaApertura": null,
+        "fechaLimite": "2026-10-15",
+        "diasRestantes": 109,
+        "modalidad": "PRESENCIAL",
+        "idioma": "Aleman/Ingles"
+    },
+    {
+        "id": 6,
+        "titulo": "Voluntariado Educativo en Comunidades Rurales",
+        "tipo": "VOLUNTARIADO",
+        "lat": 4.60127,
+        "lng": -74.06492,
+        "fechaApertura": null,
+        "fechaLimite": "2026-11-30",
+        "diasRestantes": 155,
+        "modalidad": "PRESENCIAL",
+        "idioma": "Espanol"
+    },
+    {
+        "id": 3,
+        "titulo": "Curso Online: Inteligencia Artificial (MIT)",
+        "tipo": "CURSO",
+        "lat": 42.3601,
+        "lng": -71.0942,
+        "fechaApertura": null,
+        "fechaLimite": "2026-12-31",
+        "diasRestantes": 186,
+        "modalidad": "VIRTUAL",
+        "idioma": "Ingles"
+    }
+]
