@@ -1,0 +1,38 @@
+# Java build output
+bin/
+target/
+out/
+*.class
+
+# Modulo web (globo): salida de build Maven
+web/target/
+
+# Local compilation helper
+sources.txt
+
+# IDE files
+.idea/
+*.iml
+.vscode/
+
+# Local libraries / downloaded drivers
+lib/*.jar
+
+# Local MySQL data generated during testing
+.mysql-data*/
+mysql-*.log
+mysql-*.err
+
+# Logs y salidas de error en general
+*.log
+*.err
+
+# Reportes CSV generados en tiempo de ejecucion
+reportes/
+
+# OS metadata
+Thumbs.db
+.DS_Store
+
+# Artefacto generado por maven-shade-plugin
+web/dependency-reduced-pom.xml
